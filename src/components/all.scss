@@ -152,7 +152,7 @@ $menu-label-color: $white-ter;
   }
 }
 
-@include mobile, {
+@include mobile {
   .blog-list-item header {
     display: block
   }
