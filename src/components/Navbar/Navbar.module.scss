@@ -1,20 +1,85 @@
 .navbar{
   margin: 0 auto;
-  max-width: 1344px;
+  padding-bottom: 4rem;
+  border-bottom: 2px solid red;
+  background-image: url("../../img/home-banner.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  .grayBackground{
+    background-color: rgba(86, 83, 78, 0.5);
+    padding: 1rem 0;
+  }
   .wrapper{
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1344px;
   }
-  .hamburger{
+  .containMenu{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    p{
+      padding: 1rem;
+      letter-spacing: .3rem;
+    }
+  }
+  .logo{
     display: flex;
     flex-direction: column;
-    span {
-      display: block;
-      background-color: #0f0d0c;
-      height: 5px;
-      width: 30px;
-      margin: 2px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    img{
+      max-width: 200px;
     }
+    p{
+      font-weight: 300;
+      margin: 0;
+      letter-spacing: 1rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+  }
+  .linksWrapper{
+    position: relative;
+    max-width: 1344px;
+    margin: 0 auto;
+  }
+  .links{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1.2rem;
+    a{
+      padding: .5rem 0;
+      text-decoration: none;
+      letter-spacing: .3rem;
+      //background: linear-gradient(45deg, #eee 0%, #060606 100%);
+      font-weight: 600;
+      //-webkit-background-clip: text;
+      //-webkit-text-fill-color: transparent;
+      //text-shadow: 2px 1px 1px #060606FF;
+
+    }
+  }
+  .linksLeft{
+    position: absolute;
+    left: 0;
+    top: -4rem;
+    padding-left: 1rem;
+    padding-right: 3rem;
+  }
+  .linksRight{
+    position: absolute;
+    right: 0;
+    top: -4rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+  @media screen and (max-width: 900px){
+    background-color: #D64000;
   }
 }

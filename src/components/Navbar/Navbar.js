@@ -1,34 +1,34 @@
 import React from 'react'
 import style from './Navbar.module.scss'
+import Hamburger from "./Hamburger/Hamburger";
 import { Link } from 'gatsby'
-import logo from '../../img/logo.svg'
+import logo from '../../img/logo-bez-tła.png'
 
 const Navbar = class extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      active: false,
-      navBarActiveClass: '',
+      activePortfolio: false,
+      activeHome: false,
     }
   }
 
-  toggleHamburger = () => {
+  toggleHamburgerPortfolio = () => {
     // toggle the active boolean in the state
     this.setState(
       {
-        active: !this.state.active,
+        activePortfolio: !this.state.activePortfolio,
+        activeHome: false,
       },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: 'is-active',
-            })
-          : this.setState({
-              navBarActiveClass: '',
-            })
-      }
+    )
+  }
+  toggleHamburgerHome = () => {
+    // toggle the active boolean in the state
+    this.setState(
+      {
+        activePortfolio: false,
+        activeHome: !this.state.activeHome,
+      },
     )
   }
 
@@ -39,57 +39,68 @@ const Navbar = class extends React.Component {
         role="navigation"
         aria-label="main-navigation"
       >
-        <div className={style.wrapper}>
-          <div>
-            <div className={style.hamburger}>
-              <span/>
-              <span/>
-              <span/>
+        <div className={style.grayBackground}>
+          <div className={style.wrapper}>
+            <div className={style.containMenu}
+                 onClick={this.toggleHamburgerPortfolio}
+            >
+              <Hamburger isOpen={this.state.activePortfolio}/>
+              <p>Portfolio</p>
             </div>
-            Portfolio
+
+            <Link to="/" title="Logo" className={style.logo}>
+              <img src={logo} alt="Katarzyna Paleta" />
+              <p>Katarzyna Paleta</p>
+            </Link>
+
+            <div
+              className={style.containMenu}
+              onClick={this.toggleHamburgerHome}
+            >
+              <p>Home</p>
+              <Hamburger isOpen={this.state.activeHome}/>
+            </div>
           </div>
-          <div>Logo</div>
-          <div>Home</div>
-
-
-
-          {/*<div className="navbar-brand">*/}
-          {/*  <Link to="/" className="navbar-item" title="Logo">*/}
-          {/*    <img src={logo} alt="Kaldi" style={{ width: '88px' }} />*/}
-          {/*  </Link>*/}
-          {/*  /!* Hamburger menu *!/*/}
-          {/*  <div*/}
-          {/*    className={`navbar-burger burger ${this.state.navBarActiveClass}`}*/}
-          {/*    data-target="navMenu"*/}
-          {/*    onClick={() => this.toggleHamburger()}*/}
-          {/*  >*/}
-          {/*    <span />*/}
-          {/*    <span />*/}
-          {/*    <span />*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {/*<div*/}
-          {/*  id="navMenu"*/}
-          {/*  className={`navbar-menu ${this.state.navBarActiveClass}`}*/}
-          {/*>*/}
-          {/*  <div className="navbar-start has-text-centered">*/}
-          {/*    <Link className="navbar-item" to="/about">*/}
-          {/*      About*/}
-          {/*    </Link>*/}
-          {/*    <Link className="navbar-item" to="/products">*/}
-          {/*      Products*/}
-          {/*    </Link>*/}
-          {/*    <Link className="navbar-item" to="/blog">*/}
-          {/*      Blog*/}
-          {/*    </Link>*/}
-          {/*    <Link className="navbar-item" to="/contact">*/}
-          {/*      Contact*/}
-          {/*    </Link>*/}
-          {/*    <Link className="navbar-item" to="/contact/examples">*/}
-          {/*      Form Examples*/}
-          {/*    </Link>*/}
-          {/*  </div>*/}
-          {/*</div>*/}
+        </div>
+        <div className={`${style.linksWrapper} container`}>
+          {this.state.activePortfolio &&
+          <div className={`${style.links} ${style.linksLeft} `}>
+            <Link to="/malarstwo">
+              Malarstwo
+            </Link>
+            <Link to="/rzezba">
+              Rzezba
+            </Link>
+            <Link to="/rysunek">
+              Rysunek
+            </Link>
+            <Link to="/inne">
+              Inne
+            </Link>
+          </div>
+          }
+          {this.state.activeHome &&
+          <div className={`${style.links} ${style.linksRight}`}>
+            <Link to="/o-mnie">
+              O mnie
+            </Link>
+            <Link to="/oferta">
+              Oferta
+            </Link>
+            <Link to="/kontakt">
+              Kontakt
+            </Link>
+            <Link to="/linki">
+              Linki
+            </Link>
+            <Link to="/video">
+              Video
+            </Link>
+            <Link to="/galeria">
+              Galeria
+            </Link>
+          </div>
+          }
         </div>
       </nav>
     )
