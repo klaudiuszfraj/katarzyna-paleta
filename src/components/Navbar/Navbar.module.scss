@@ -6,7 +6,8 @@
   background-position: top center;
   background-repeat: no-repeat;
   .grayBackground{
-    background-color: rgba(86, 83, 78, 0.5);
+    background: rgb(86,83,78);
+    background: linear-gradient(90deg, rgba(86,83,78,1) 10%, rgba(86,83,78,0.4962359943977591) 40%, rgba(86,83,78,0.5018382352941176) 60%, rgba(86,83,78,1) 90%);
     padding: 1rem 0;
   }
   .wrapper{
